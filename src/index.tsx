@@ -1,38 +1,38 @@
 import React from 'react';
-import { View, ViewProps, Image } from 'react-native';
-import { getTransformMatrix } from './getTransformMatrix';
+import { View, ViewProps, Image, ImageSourcePropType } from 'react-native';
+import { getTransformMatrix, CornerPoints } from './getTransformMatrix';
 
 interface PerspectiveCorrectionImageProps extends ViewProps {
-  source: any,
-  srcImageWidth: number;
-  srcImageHeight: number;
-  targetWidth: number;
-  targetHeight: number;
-  corners: number[];
+  source: ImageSourcePropType,
+  sourceCorners: CornerPoints;
+  sourceWidth: number;
+  sourceHeight: number;
+  width: number;
+  height: number;
 }
 
 export const PerspectiveCorrectionImage: React.FC<
   PerspectiveCorrectionImageProps
 > = ({
   source,
-  srcImageWidth,
-  srcImageHeight,
-  targetWidth,
-  targetHeight,
-  corners,
+  sourceCorners,
+  sourceWidth,
+  sourceHeight,
+  width,
+  height,
   ...props
 }) => {
-  const dstCorners = [
+  const targetCorners: CornerPoints = [
     0,
     0,
-    targetWidth,
+    width,
     0,
     0,
-    targetHeight,
-    targetWidth,
-    targetHeight,
+    height,
+    width,
+    height,
   ];
-  const c = getTransformMatrix(corners, dstCorners);
+  const c = getTransformMatrix(sourceCorners, targetCorners);
 
   /*
    * Transform matrix order (4x4, transposed)
@@ -64,8 +64,8 @@ export const PerspectiveCorrectionImage: React.FC<
   return (
     <View
       style={{
-        width: targetWidth,
-        height: targetHeight,
+        width: width,
+        height: height,
         backgroundColor: 'red',
         overflow: 'hidden',
         ...props,
@@ -74,14 +74,14 @@ export const PerspectiveCorrectionImage: React.FC<
       <Image
         source={source}
         style={{
-          width: srcImageWidth,
-          height: srcImageHeight,
+          width: sourceWidth,
+          height: sourceHeight,
           transform: [
-            { translateX: -srcImageWidth / 2 },
-            { translateY: -srcImageHeight / 2 },
+            { translateX: -sourceWidth / 2 },
+            { translateY: -sourceHeight / 2 },
             { matrix },
-            { translateX: srcImageWidth / 2 },
-            { translateY: srcImageHeight / 2 },
+            { translateX: sourceWidth / 2 },
+            { translateY: sourceHeight / 2 },
           ],
         }}
       />

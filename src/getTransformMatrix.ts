@@ -6,7 +6,20 @@
  * assigned types to the params.
  *
  */
-export function getTransformMatrix(srcPts: number[], dstPts: number[]) {
+
+// 4 corner points
+export type CornerPoints = [
+  number, // x1
+  number, // y1
+  number, // x2
+  number, // y2
+  number, // x3
+  number, // y3
+  number, // x4
+  number  // y4
+];
+
+export function getTransformMatrix(srcPts: CornerPoints, dstPts: CornerPoints) {
   var r1 = [
     srcPts[0],
     srcPts[1],
