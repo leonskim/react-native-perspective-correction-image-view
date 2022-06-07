@@ -1,20 +1,23 @@
 import * as React from 'react';
-
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-perspective-correction-image-view';
+import { StyleSheet, View, Text, Image } from 'react-native';
+import { PerspectiveCorrectionImage } from 'react-native-perspective-correction-image-view';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
-  return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
-  );
+ return (
+   <View style={styles.container}>
+     <Text>Origianl Image</Text>
+     <Image source={require('./sample.png')} />
+     <Text style={{ marginTop: 60 }}>Result Image</Text>
+     <PerspectiveCorrectionImage
+       source={require('./sample.png')}
+       srcImageWidth={400}
+       srcImageHeight={300}
+       targetWidth={200}
+       targetHeight={150}
+       corners={[114, 80, 324, 46, 77, 203, 306, 252]}
+     />
+   </View>
+ );
 }
 
 const styles = StyleSheet.create({
@@ -22,10 +25,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
   },
 });
