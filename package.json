@@ -1,6 +1,6 @@
 {
   "name": "react-native-perspective-correction-image-view",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "An image view component that corrects the distorted image with its corner points.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
