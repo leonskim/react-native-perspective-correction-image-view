@@ -118,8 +118,6 @@ export function getTransformMatrix(srcPts: CornerPoints, dstPts: CornerPoints) {
   }
   matX[8] = 1;
 
-  // console.log({matX});
-
   return matX;
 }
 

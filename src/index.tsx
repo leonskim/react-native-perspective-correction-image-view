@@ -9,7 +9,7 @@ import {
 import { getTransformMatrix, CornerPoints } from './getTransformMatrix';
 
 interface PerspectiveCorrectionImageProps extends ViewProps {
-  source: ImageSourcePropType,
+  source: ImageSourcePropType;
   sourceCorners: CornerPoints;
   sourceWidth: number;
   sourceHeight: number;
@@ -33,7 +33,7 @@ export const PerspectiveCorrectionImage = React.forwardRef<
       backgroundColor,
       ...props
     }: PerspectiveCorrectionImageProps,
-    ref?: React.ForwardedRef<View>,
+    ref?: React.ForwardedRef<View>
   ) => {
     const targetCorners: CornerPoints = [
       0,
