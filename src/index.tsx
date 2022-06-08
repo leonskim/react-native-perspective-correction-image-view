@@ -22,8 +22,8 @@ export const PerspectiveCorrectionImage = React.forwardRef<View, PerspectiveCorr
     height,
     backgroundColor,
     ...props
-  },
-  ref
+  }: PerspectiveCorrectionImageProps,
+  ref?: React.ForwardedRef<View>
 ) => {
   const targetCorners: CornerPoints = [
     0,
