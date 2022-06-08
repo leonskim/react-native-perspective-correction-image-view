@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ViewProps, Image, ImageSourcePropType } from 'react-native';
+import { View, ViewProps, Image, ImageSourcePropType, ColorValue } from 'react-native';
 import { getTransformMatrix, CornerPoints } from './getTransformMatrix';
 
 interface PerspectiveCorrectionImageProps extends ViewProps {
@@ -9,19 +9,22 @@ interface PerspectiveCorrectionImageProps extends ViewProps {
   sourceHeight: number;
   width: number;
   height: number;
+  backgroundColor?: ColorValue;
 }
 
-export const PerspectiveCorrectionImage: React.FC<
-  PerspectiveCorrectionImageProps
-> = ({
-  source,
-  sourceCorners,
-  sourceWidth,
-  sourceHeight,
-  width,
-  height,
-  ...props
-}) => {
+export const PerspectiveCorrectionImage = React.forwardRef<View, PerspectiveCorrectionImageProps>((
+  {
+    source,
+    sourceCorners,
+    sourceWidth,
+    sourceHeight,
+    width,
+    height,
+    backgroundColor,
+    ...props
+  },
+  ref
+) => {
   const targetCorners: CornerPoints = [
     0,
     0,
@@ -66,10 +69,11 @@ export const PerspectiveCorrectionImage: React.FC<
       style={{
         width: width,
         height: height,
-        backgroundColor: 'red',
+        backgroundColor: backgroundColor || 'red',
         overflow: 'hidden',
         ...props,
       }}
+      ref={ref}
     >
       <Image
         source={source}
@@ -87,4 +91,4 @@ export const PerspectiveCorrectionImage: React.FC<
       />
     </View>
   );
-};
+});

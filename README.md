@@ -26,6 +26,8 @@ Please take a look at the example app.
    sourceHeight={300}
    width={200}
    height={150}
+   backgroundColor='black'
+   ref={perspectiveCorrectionImageRef}
 />
 ```
 
