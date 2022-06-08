@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
-import { PerspectiveCorrectionImage } from 'react-native-perspective-correction-image-view';
+import { PerspectiveCorrectionImage, CornerPoints } from 'react-native-perspective-correction-image-view';
 
 export default function App() {
+  const sourceCorners: CornerPoints = [114, 80, 324, 46, 77, 203, 306, 252];
   const ref = React.createRef<View>();
   return (
     <View style={styles.container}>
@@ -14,7 +15,7 @@ export default function App() {
       <Text style={styles.text}>Result Image</Text>
       <PerspectiveCorrectionImage
         source={require('./sample.png')}
-        sourceCorners={[114, 80, 324, 46, 77, 203, 306, 252]}
+        sourceCorners={sourceCorners}
         sourceWidth={400}
         sourceHeight={300}
         width={200}

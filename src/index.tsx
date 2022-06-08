@@ -6,7 +6,12 @@ import {
   ImageSourcePropType,
   ColorValue,
 } from 'react-native';
-import { getTransformMatrix, CornerPoints } from './getTransformMatrix';
+import {
+  getTransformMatrix,
+  CornerPoints as CornerPointsType,
+} from './getTransformMatrix';
+
+export type CornerPoints = CornerPointsType;
 
 interface PerspectiveCorrectionImageProps extends ViewProps {
   source: ImageSourcePropType;
