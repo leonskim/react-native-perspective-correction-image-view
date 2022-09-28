@@ -31,6 +31,10 @@ Please take a look at the example app.
 />
 ```
 
+## Parameters
+The source corners are X,Y points from top left going clockwise.
+![param_order](https://user-images.githubusercontent.com/997157/192820498-18d891da-4e2a-4393-873b-d885eeef0df9.jpg)
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
